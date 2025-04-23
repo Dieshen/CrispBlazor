@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>aspnet-CrispBlazor-d157f930-aa89-4016-a3c9-1de22089a4f2</UserSecretsId>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\CrispBlazor.Client\CrispBlazor.Client.csproj" />
+    <ProjectReference Include="..\CrispBlazor.Shared\CrispBlazor.Shared.csproj" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="Modules\Identity\Events\" />
+    <Folder Include="Modules\Identity\Filters\" />
+    <Folder Include="Services\ApplicationServices\" />
+    <Folder Include="Services\ThidPartyServices\" />
+  </ItemGroup>
+
+</Project>

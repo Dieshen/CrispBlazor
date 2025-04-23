@@ -2,9 +2,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.13.35919.96
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrispBlazor", "CrispBlazor\CrispBlazor\CrispBlazor.csproj", "{12E2CFF4-045F-4CF0-9526-BBE99A81927D}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_SolutionItems", "_SolutionItems", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		Directory.Packages.props = Directory.Packages.props
+		LICENSE.txt = LICENSE.txt
+		README.md = README.md
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrispBlazor.Client", "CrispBlazor\CrispBlazor.Client\CrispBlazor.Client.csproj", "{AB6D0B0C-2868-4244-B13F-9A4A56B6AA38}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{FE584D49-BCE8-4FA8-AD26-5E6B6B5B464A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{3D3DEDC1-E8B6-4AD2-AF0A-F91572B65DF8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrispBlazor.Client", "src\CrispBlazor.Client\CrispBlazor.Client.csproj", "{090702C2-A0E6-4026-9584-DB4EB2B8238E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrispBlazor", "src\CrispBlazor\CrispBlazor.csproj", "{227511EE-3A74-072E-2CBD-DB94B1E4CF9A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrispBlazor.Shared", "src\CrispBlazor.Shared\CrispBlazor.Shared.csproj", "{83CC6EBF-AD57-41D0-84C1-4EF71D84A275}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,17 +26,26 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{12E2CFF4-045F-4CF0-9526-BBE99A81927D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{12E2CFF4-045F-4CF0-9526-BBE99A81927D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{12E2CFF4-045F-4CF0-9526-BBE99A81927D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{12E2CFF4-045F-4CF0-9526-BBE99A81927D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AB6D0B0C-2868-4244-B13F-9A4A56B6AA38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AB6D0B0C-2868-4244-B13F-9A4A56B6AA38}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AB6D0B0C-2868-4244-B13F-9A4A56B6AA38}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AB6D0B0C-2868-4244-B13F-9A4A56B6AA38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{090702C2-A0E6-4026-9584-DB4EB2B8238E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{090702C2-A0E6-4026-9584-DB4EB2B8238E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{090702C2-A0E6-4026-9584-DB4EB2B8238E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{090702C2-A0E6-4026-9584-DB4EB2B8238E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{227511EE-3A74-072E-2CBD-DB94B1E4CF9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{227511EE-3A74-072E-2CBD-DB94B1E4CF9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{227511EE-3A74-072E-2CBD-DB94B1E4CF9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{227511EE-3A74-072E-2CBD-DB94B1E4CF9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83CC6EBF-AD57-41D0-84C1-4EF71D84A275}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83CC6EBF-AD57-41D0-84C1-4EF71D84A275}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83CC6EBF-AD57-41D0-84C1-4EF71D84A275}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83CC6EBF-AD57-41D0-84C1-4EF71D84A275}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{090702C2-A0E6-4026-9584-DB4EB2B8238E} = {FE584D49-BCE8-4FA8-AD26-5E6B6B5B464A}
+		{227511EE-3A74-072E-2CBD-DB94B1E4CF9A} = {FE584D49-BCE8-4FA8-AD26-5E6B6B5B464A}
+		{83CC6EBF-AD57-41D0-84C1-4EF71D84A275} = {FE584D49-BCE8-4FA8-AD26-5E6B6B5B464A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F92D3F2F-78C8-4FDB-98F1-2319E4BF2EBA}
