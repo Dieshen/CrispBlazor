@@ -9,7 +9,7 @@ namespace CrispBlazor.Modules.ProjectManagement
 {
     public class PMModule : IModule
     {
-        public void MapModuleEndpoints(IEndpointRouteBuilder endpoints)
+        public void MapEndpoints(IEndpointRouteBuilder endpoints)
         {
             string route = new ApiRouteBuilder().WithGroupName(nameof(Project).Pluralize()).Build();
             RouteGroupBuilder group = endpoints.MapGroup(route)
@@ -21,7 +21,7 @@ namespace CrispBlazor.Modules.ProjectManagement
             GetProjectsEndpoint.Map(group);
         }
 
-        public void MapModuleServices(IServiceCollection services)
+        public void RegisterModule(IServiceCollection services)
         {
             services.AddScoped<ICreateService<CreateProject>, CreateProjectService>();
             services.AddScoped<IRequestService<GetProject, Project>, GetProjectService>();

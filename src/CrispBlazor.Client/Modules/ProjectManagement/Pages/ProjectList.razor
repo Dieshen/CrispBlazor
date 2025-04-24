@@ -1,5 +1,17 @@
-﻿<h3>ProjectList</h3>
+﻿@page "/projects"
+
+<h3>ProjectList</h3>
 
 @code {
+    private IEnumerable<Project> _projects = [];
+    private int _totalCount = 0;
+    [Inject]
+    private IFilteredQueryService<GetProjects, Project> QueryService { get; set; } = default!;
 
+    protected override async Task OnInitializedAsync()
+    {
+        var response = await QueryService.Send(new GetProjects());
+        _projects = response.Items;
+        _totalCount = response.TotalItems;
+    }
 }

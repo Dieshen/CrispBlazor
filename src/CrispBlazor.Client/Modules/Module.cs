@@ -6,7 +6,7 @@ namespace CrispBlazor.Client.Modules
 {
     public interface IModule
     {
-        void MapModuleServices(WebAssemblyHostBuilder builder);
+        void RegisterModule(WebAssemblyHostBuilder builder);
         static IAsyncPolicy<HttpResponseMessage> GetRetryPolicy() =>
             HttpPolicyExtensions
                 .HandleTransientHttpError()
@@ -16,6 +16,24 @@ namespace CrispBlazor.Client.Modules
 
     public static class ModuleExtensions
     {
-        public static WebAssemblyHostBuilder AddApplicationServices(this WebAssemblyHostBuilder builder) => builder;
+        private static readonly List<IModule> registeredModules = [];
+        public static WebAssemblyHostBuilder RegisterModules(this WebAssemblyHostBuilder builder)
+        {
+            IEnumerable<IModule> modules = DiscoverModules();
+            foreach (IModule module in modules)
+            {
+                module.RegisterModule(builder);
+                registeredModules.Add(module);
+            }
+
+            return builder;
+        }
+
+        private static IEnumerable<IModule> DiscoverModules() =>
+            typeof(IModule).Assembly
+                           .GetTypes()
+                           .Where(p => p.IsClass && p.IsAssignableTo(typeof(IModule)))
+                           .Select(Activator.CreateInstance)
+                           .Cast<IModule>();
     }
 }

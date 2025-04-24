@@ -2,20 +2,39 @@
 {
     public interface IModule
     {
-        void MapModuleServices(IServiceCollection services);
-        void MapModuleEndpoints(IEndpointRouteBuilder endpoints);
+        void RegisterModule(IServiceCollection services);
+        void MapEndpoints(IEndpointRouteBuilder endpoints);
     }
 
     public static class ModuleExtensions
     {
-        public static IServiceCollection AddApplicationServices(this IServiceCollection services)
+        private static readonly List<IModule> registeredModules = [];
+        public static IServiceCollection RegisterModules(this IServiceCollection services)
         {
+            IEnumerable<IModule> modules = DiscoverModules();
+            foreach (IModule module in modules)
+            {
+                module.RegisterModule(services);
+                registeredModules.Add(module);
+            }
+
             return services;
         }
 
-        public static IEndpointRouteBuilder MapApplicationEndpoints(this IEndpointRouteBuilder endpoints)
+        public static WebApplication MapEndpoints(this WebApplication app)
         {
-            return endpoints;
+            foreach (IModule module in registeredModules)
+            {
+                module.MapEndpoints(app);
+            }
+            return app;
         }
+
+        private static IEnumerable<IModule> DiscoverModules() =>
+            typeof(IModule).Assembly
+                           .GetTypes()
+                           .Where(p => p.IsClass && p.IsAssignableTo(typeof(IModule)))
+                           .Select(Activator.CreateInstance)
+                           .Cast<IModule>();
     }
 }
